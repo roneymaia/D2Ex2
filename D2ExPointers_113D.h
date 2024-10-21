@@ -101,7 +101,7 @@ _d2f D2Funcs = {0}; void SetupD2Funcs() {
 		EXFUNCPTR(D2COMMON, AddRoomData, void, __stdcall, (Act* ptAct, int LevelId, int Xpos, int Ypos, Room1*  pRoom), -10890) //k
 		EXFUNCPTR(D2COMMON, RemoveRoomData, void, __stdcall, (Act* ptAct, int LevelId, int Xpos, int Ypos, Room1*  pRoom), -10208) //k
 		EXFUNCPTR(D2COMMON, GetLevel, Level*, __fastcall, (ActMisc* pMisc, int dwLevelNo), -10283) //k
-		EXFUNCPTR(D2COMMON, GetLayer, AutoMapLayer2*, __fastcall, (DWORD dwLevelNo), -10087) //k
+		// EXFUNCPTR(D2COMMON, GetLayer, AutoMapLayer2*, __fastcall, (DWORD dwLevelNo), -10087) //k
 		EXFUNCPTR(D2COMMON, GetObjectTxt, ObjectTxt*, __stdcall, (DWORD objno), -10319) //k
 		EXFUNCPTR(D2COMMON, GetRoomXYByLevel, Room1*, __stdcall, (Act* ptAct, int LevelNo, int Unk0, int* xPos, int* yPos, int UnitAlign), -10632) //k // Player Align =  2
 		EXFUNCPTR(D2COMMON, GetRoomByXY, Room1*, __stdcall, (Act* ptAct, int nX, int nY), -11056) // k
@@ -151,9 +151,9 @@ _d2f D2Funcs = {0}; void SetupD2Funcs() {
 		EXFUNCPTR(D2GFX, GetHwnd, HWND, __stdcall, (void), -10007) // k
 		EXFUNCPTR(D2GFX, DrawCellContext, void, __stdcall, (CellContext *context, int Xpos, int Ypos, int dwl, int nTransLvl, BYTE *Pal255), -10042) // k
 		EXFUNCPTR(D2GFX, DrawCellContextEx, void, __stdcall, (CellContext *context, int Xpos, int Ypos, int dwl, int nTransLvl, BYTE Color), -10067) //k
-		EXFUNCPTR(D2GFX, GetResolutionMode, int, __stdcall, (), -10012)
-		EXFUNCPTR(D2GFX, SetResolutionMode, BOOL, __stdcall, (int nMode, BOOL bUpdate), -10069)
-		EXFUNCPTR(D2GFX, SetScreenShift, void, __fastcall, (int nShift), -10047)
+		// EXFUNCPTR(D2GFX, GetResolutionMode, int, __stdcall, (), -10012)
+		// EXFUNCPTR(D2GFX, SetResolutionMode, BOOL, __stdcall, (int nMode, BOOL bUpdate), -10069)
+		// EXFUNCPTR(D2GFX, SetScreenShift, void, __fastcall, (int nShift), -10047)
 		EXFUNCPTR(D2GFX, InitGouraudCache, void, __stdcall, (), 0x9750)
 
 		//D2GDI
@@ -262,7 +262,7 @@ _d2p D2Ptrs = { 0 };
 void SetupD2Pointers() {
 #endif
 
-	EXASMPTR(D2CLIENT, InitAutomapLayer_I, 0x733D0)
+	// EXASMPTR(D2CLIENT, InitAutomapLayer_I, 0x733D0)
 
 	EXASMPTR(D2NET, ReceivePacket_I, -10001) // k [isPacketCorrect]
 	EXASMPTR(D2GAME, FindFreeCoords_I, 0xE0000)

@@ -27,6 +27,7 @@ class ExWindow : public ExControl
 public:
 	ExWindow(int wX, int wY, int wWid, int wHei, bool isTopBar, wstring szLabel);
 	void Draw();
+	void Draw(int newCy);
 	~ExWindow(void);
 	
 	void SetWidth(int cW) override;

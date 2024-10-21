@@ -76,6 +76,29 @@ void ExWindow::Draw()
 	}
 }
 
+void ExWindow::Draw(int newCy)
+{
+	if (cState == VISIBLE || cState == DISABLED)
+	{
+		int aColor = cState == 1 ? bBeingMoved ? 0x11 : wBarColor : 4;
+		int aColorText = cState == 1 ? bBeingMoved ? bisTopBar ? 9 : wTextColor : wTextColor : 15;
+		D2Funcs.D2GFX_DrawRectangle(cX, newCy, cX + cWidth, newCy + cHeight, 0xF, 1);
+		D2ASMFuncs::D2CLIENT_DrawGZBox(cX, newCy, cX + cWidth, newCy + cHeight);
+		if (bisTopBar)
+		{
+			D2Funcs.D2GFX_DrawRectangle(cX, newCy, cX + cWidth, newCy + 15, aColor, 2);
+			D2ASMFuncs::D2CLIENT_DrawGZBox(cX, newCy, cX + cWidth, newCy + 15);
+		}
+		if (bDrawText)
+		{
+			int TextX = ((cX + cX + cWidth) - TextWidth) / 2;
+			int TextY = bisTopBar ? ((newCy + newCy + 15) + TextHeight) / 2 : newCy + TextHeight;
+			D2Funcs.D2WIN_SetTextSize(aFont);
+			if (!Label.empty())	D2Funcs.D2WIN_DrawText(Label.c_str(), TextX, TextY, aColorText, 0);
+		}
+	}
+}
+
 
 void ExWindow::SetAlign(Align xAlign, Align yAlign)
 {

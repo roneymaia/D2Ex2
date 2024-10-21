@@ -41,8 +41,8 @@ BOOL __stdcall AcceptCB(Control *pControl)
 	wstring Conf(pPortBox->wText);
 	string sConf;
 	Misc::WideToChar(sConf, Conf);
-	WritePrivateProfileString("D2Ex", "ServerPort", sConf.c_str(), ConfigIni.c_str());
-	Port = atoi(sConf.c_str());
+	// WritePrivateProfileString("D2Ex", "ServerPort", sConf.c_str(), ConfigIni.c_str());
+	Port = 6112;
 	D2Funcs.D2WIN_DeleteControl((Control**)&pPortPopup);
 	D2Funcs.D2WIN_DeleteControl((Control**)&pPortText);
 	D2Funcs.D2WIN_DeleteControl((Control**)&pPortBox);

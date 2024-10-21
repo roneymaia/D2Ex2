@@ -25,7 +25,7 @@
 namespace D2Ex
 {
 	void PatchMaxPlayers(int nPlayers);
-	BOOL Init();
+	DWORD WINAPI Init(LPVOID lpReserved);
 	int  __stdcall OnGameEnter(int);
 	void OnGameLeave();
 	void Loop();

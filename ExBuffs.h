@@ -83,6 +83,7 @@ public:
 	ExBuff(unsigned int pos, ExBuffsImgs ImageId, BuffType aType);
 	~ExBuff();
 	void Draw();
+	void Draw(int newCy);
 
 	unsigned int GetPos() const { return pos; }
 	void SetPos(unsigned int p);

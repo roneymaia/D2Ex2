@@ -35,6 +35,7 @@ public:
 	ExLagometer(int X, int Y);
 	~ExLagometer();
 	void Draw() override;
+	void Draw(int newCy) override;
 	void SetColor(unsigned int ping) override;
 
 static BOOL __fastcall OnPong(BYTE* aPacket);

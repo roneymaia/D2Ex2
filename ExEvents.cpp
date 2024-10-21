@@ -89,7 +89,7 @@ int __fastcall ExEvents::OnTextEvent(ExEvent *Dane) //0xA6
 			ExEventReveal *msg = (ExEventReveal*)Dane;
 			int aLevel = msg->nLevel;
 			if (!ExParty::GetPlayerArea()) break;
-			ExAutomap::RevealLevel(aLevel);
+			// ExAutomap::RevealLevel(aLevel);
 		}
 		break;
 		case EXEVENT_OPTIONS:
@@ -114,7 +114,7 @@ int __fastcall ExEvents::OnTextEvent(ExEvent *Dane) //0xA6
 					int players = (DWORD)msg->nValue;
 					DEBUGMSG("Max players value was updated to %d", players)
 					D2Ex::PatchMaxPlayers(players);
-					WritePrivateProfileString("D2Ex", "MaxPlayers", boost::lexical_cast<string>(players).c_str(), ConfigIni.c_str());
+					// WritePrivateProfileString("D2Ex", "MaxPlayers", boost::lexical_cast<string>(players).c_str(), ConfigIni.c_str());
 				}
 				break;
 				case EXOP_SET_MAX_FIRE_RES_CAP:

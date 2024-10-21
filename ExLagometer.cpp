@@ -54,6 +54,20 @@ void ExLagometer::Draw()
 	}
 }
 
+void ExLagometer::Draw(int newCy)
+{
+	D2Funcs.D2GFX_DrawRectangle(cX, newCy, cX + cWidth, newCy + cHeight, D2Funcs.D2WIN_MixRGB(0, 40, 5), 5);
+	D2ASMFuncs::D2CLIENT_DrawGZBox(cX - 1, newCy - 1, cX + cWidth + 1, newCy + cHeight + 1);
+	for (int x = 0; x < LAGOMETER_HISTORY; ++x)
+	{
+		int i = (frameIndex + 1 + x) % LAGOMETER_HISTORY;
+		if (pings[i] == 0) continue;
+
+		D2Funcs.D2GFX_DrawRectangle(cX + x, newCy + cHeight - pings[i], cX + x + 1, newCy + cHeight, DrawColor, 5);
+
+	}
+}
+
 void ExLagometer::SetColor(unsigned int ping)
 {
 	frameIndex = (frameIndex + 1) % LAGOMETER_HISTORY;

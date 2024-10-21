@@ -22,7 +22,7 @@
 #include "ExEntryText.h"
 
 #include "ExParty.h"
-#include "ExAutomap.h"
+// #include "ExAutomap.h"
 #include "ExScreen.h"
 
 
@@ -49,7 +49,7 @@ void ExEntryText::Draw()
 	  LevelId = lvlNo;
 	  Timer = 120;
 	  ExParty::Update();
-	  if(Maphack) ExAutomap::RevealLevel(LevelId);
+	//   if(Maphack) ExAutomap::RevealLevel(LevelId);
    }
 
    if (Timer > 0)

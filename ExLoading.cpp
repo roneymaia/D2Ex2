@@ -52,6 +52,8 @@ struct Seed
 
 HANDLE __stdcall ExLoading::CreateCacheFile(LPCSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile)
 {
+	return nullptr;
+
 	uniform_int_distribution<int> get_rand_cache_number(0, 8192);
 	std::random_device rd;
 	std::mt19937 gen(rd());

@@ -113,6 +113,15 @@ void ExControl::Draw()
 		D2Funcs.D2WIN_DrawText(L"<NULL CONTROL>", cX, cY, 11, 0); // THIS NEVER HAPPEN
 	}
 }
+void ExControl::Draw(int newCy)
+{
+	if (cState != INVISIBLE)
+	{
+		D2Funcs.D2GFX_DrawRectangle(cX, newCy, cX + cWidth, newCy + cHeight, 0xFF, 5);
+		D2Funcs.D2WIN_SetTextSize(aFont);
+		D2Funcs.D2WIN_DrawText(L"<NULL CONTROL>", cX, newCy, 11, 0); // THIS NEVER HAPPEN
+	}
+}
 bool ExControl::isPressed(DWORD Sender, WPARAM wParam)
 {
 	switch (Sender)

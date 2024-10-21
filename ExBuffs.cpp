@@ -168,9 +168,26 @@ ExBuff::~ExBuff()
 
 void ExBuff::Draw()
 {
-	Buff->Draw();
-	BuffTime->Draw();
-	BuffInfo->Draw();
+	int newCy = Buff->GetY();
+	int newBtCy = BuffTime->GetY();
+	int newBiCy = BuffInfo->GetY();
+
+	if (*D2Vars.D2CLIENT_ScreenWidth == 1068 && *D2Vars.D2CLIENT_ScreenHeight == 600) {
+		newCy -= 35;
+		newBtCy -= 35;
+		newBiCy -= 35;
+	}
+
+	Buff->Draw(newCy);
+	BuffTime->Draw(newBtCy);
+	BuffInfo->Draw(newBiCy);
+}
+
+void ExBuff::Draw(int newCy)
+{
+	Buff->Draw(newCy);
+	BuffTime->Draw(newCy);
+	BuffInfo->Draw(newCy);
 }
 
 bool ExBuff::isPressed(DWORD Sender, WPARAM wParam)
@@ -593,7 +610,7 @@ void __update_temp(BuffType aType, int& pos)
 				wstringstream wstr;
 				if (timeLeft > 0) {
 					gLocaleId ==
-						LOCALE_POL ? wstr << ExScreen::GetColorCode(COL_GREY) << L"Czas pozosta³y : " << Misc::ConvertTickToTime(timeLeft) << L" sekund(y)" << L"\n" :
+						LOCALE_POL ? wstr << ExScreen::GetColorCode(COL_GREY) << L"Czas pozostaï¿½y : " << Misc::ConvertTickToTime(timeLeft) << L" sekund(y)" << L"\n" :
 						wstr << ExScreen::GetColorCode(COL_GREY) << L"Time remaining : " << Misc::ConvertTickToTime(timeLeft) << L" sec(s)" << L"\n";
 				}
 				wstr << ExScreen::GetColorCode(COL_LIGHTGREEN) << ExBuffs::GetSkillName(n.SkillId);

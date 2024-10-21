@@ -23,16 +23,16 @@
 //--------- General Flags ----------------
 //#define D2EX_CLOSED_BNET "Closed Bnet|"		// Set you gonna use this on Blizzard BNet
 //#define D2EX_SCRAP_HACKS "Scrap Hacks|"		// - || -
-//#define D2EX_MULTIRES "Multi Res|"				// Enables high resolution settings
+// #define D2EX_MULTIRES "Multi Res|"				// Enables high resolution settings
 #define D2EX_PVPGN_EXT "PvPGN Extensions|"		// Enables serverside stuff like kill counter, spectator mode etc [Needs serverside dll to work]
 //#define D2EX_EXAIM_ENABLED "ExAim|"			// Experimental -- never finished | may not work --
 //#define D2EX_PVM_BUILD "PvM|"					// Enables Maphack with monsters on the map, autotele, etc.
 #define D2EX_MAX_SND_TXT_ROWS 4954				// Maximum rows in Sound.txt
-#define	D2EX_I_NEED_CUBE					// Define if you need transmute button
-#define D2EX_ENABLE_PACKET_COMMANDS				// Enables packet sender (#send, #recv, #block)
-#define D2EX_DEBUG_INFO							// Display Selected unit info (id, x, y)
+// #define	D2EX_I_NEED_CUBE					// Define if you need transmute button
+// #define D2EX_ENABLE_PACKET_COMMANDS				// Enables packet sender (#send, #recv, #block)
+// #define D2EX_DEBUG_INFO							// Display Selected unit info (id, x, y)
 #define D2EX_PRINT_ITEMLEVEL					// Add item level property to an item
-#define D2EX_EXTENDED_LEVELS					// Allows to add new levels (up to 255)
+// #define D2EX_EXTENDED_LEVELS					// Allows to add new levels (up to 255)
 //*******************************************
 
 //---------- ExMultiRes flags -------------
@@ -50,14 +50,14 @@
 #ifdef D2EX_PVPGN_EXT
 //#define D2EX_PVPGN_GIVEUP						// Adds `Give up` to ESC menu
 //#define D2EX_ARGOLD "AR Gold|"				// Enables client support for virutal gold service in trade window [Needs serverside dll to work]
-#define D2EX_FORUMGOLD							// Enables client support to replace gold with external forum gold currency [ Needs serverside dll to work]
-#define D2EX_SPECTATOR
+// #define D2EX_FORUMGOLD							// Enables client support to replace gold with external forum gold currency [ Needs serverside dll to work]
+// #define D2EX_SPECTATOR
 #define D2EX_COLOR_STAT		189					// ItemStatCost.Txt record which stores item color value
 #define D2EX_LOOTED_STAT	190					// ItemStatCost.Txt record which stores monster id which gave the item
 #ifdef D2EX_SPECTATOR
 	#define D2EX_SPECTATOR_STATE 245			// States.Txt record set on spectators
 #endif
-#define D2EX_CUSTOM_CUBE_RECIPES				// Adds 'portal' keyword to CubeMain.Txt recipes [ Needs serverside dll to work ]
+// #define D2EX_CUSTOM_CUBE_RECIPES				// Adds 'portal' keyword to CubeMain.Txt recipes [ Needs serverside dll to work ]
 #endif
 //******************************************
 
@@ -101,7 +101,7 @@ using namespace std;
 #endif
 
 //ASSERT macro is deprecated, use D2EXASSERT
-#define ASSERT(e) if (e == 0) { ShowWindow(D2Funcs.D2GFX_GetHwnd(),SW_HIDE);Misc::Log("Error at line %d in file '%s' , function: '%s'",__LINE__,__FILE__,__FUNCTION__); MessageBoxA(0,"An error occured. Check D2Ex.log, and send error\ncode to *LOLET!","D2Ex",0); exit(-1); }
+#define ASSERT(e) if (e == 0) { ShowWindow(D2Funcs.D2GFX_GetHwnd(),SW_HIDE);Misc::Log("Error at line %d in file '%s' , function: '%s'",__LINE__,__FILE__,__FUNCTION__); MessageBoxA(0,"An error occured. Check diablo2br.log, and send error\ncode to *LOLET!","D2BR",0); exit(-1); }
 
 #define D2EXASSERT(e, format, ...) if(!e) { ShowWindow(D2Funcs.D2GFX_GetHwnd(),SW_HIDE);   Misc::ShowMsgBox(format, ##__VA_ARGS__); exit(-1); }
 #define D2EXERROR(format, ...) { ShowWindow(D2Funcs.D2GFX_GetHwnd(),SW_HIDE);   Misc::ShowMsgBox(format, ##__VA_ARGS__); exit(-1); }

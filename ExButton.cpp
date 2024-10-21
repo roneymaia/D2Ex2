@@ -86,6 +86,31 @@ void ExButton::Draw()
 	D2Funcs.D2WIN_DrawFramedText(Hoover.c_str(), cX, cY - cHeight - 10, 0, 0);
 }
 
+void ExButton::Draw(int newCy)
+{
+	if (cState == INVISIBLE) return;
+	if (bBeingPressed){
+		aCellFile->Get()->nCellNo = bLongButton ? aFrame + 2 : aFrame + 1;
+		FixText(2, 1); 
+	}
+	else
+	{
+		aCellFile->Get()->nCellNo = aFrame;
+		FixText(0, 0);
+	}
+	D2Funcs.D2GFX_DrawCellContextEx(aCellFile->Get(), cX, newCy, -1, 5, cState == VISIBLE ? Color : COL_RED);
+	if (bLongButton)
+	{
+		int aWid = aCellFile->Get()->pCellFile->cells[aFrame]->width;
+		aCellFile->Get()->nCellNo++;
+		D2Funcs.D2GFX_DrawCellContextEx(aCellFile->Get(), cX + aWid, newCy, -1, 5, cState == VISIBLE ? Color : COL_RED);
+	}
+	aTextBox->Draw();
+	if (Hoover.empty() || !bBeingSelected) return;
+
+	D2Funcs.D2WIN_DrawFramedText(Hoover.c_str(), cX, newCy - cHeight - 10, 0, 0);
+}
+
 void ExButton::SetColor(unsigned int nColor)
 {
 	Color = nColor;

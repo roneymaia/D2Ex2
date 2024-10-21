@@ -31,6 +31,7 @@ class ExButton : virtual public ExControl
 public:
 	ExButton(int bX, int bY, int TextColor, unsigned int Frame, wstring szLabel, string szFile, void(*tevent_onClick)(exId), bool LongButton);
 	void Draw() override;
+	void Draw(int newCy) override;
 	bool isPressed(DWORD Sender, WPARAM wParam) override;
 	~ExButton(void);
 

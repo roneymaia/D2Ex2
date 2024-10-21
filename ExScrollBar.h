@@ -34,6 +34,7 @@ public:
 	ExScrollBar(int X, int Y, int Min, int Max, int Height,int *Var, void (*efnOnChange)(exId));
 	~ExScrollBar();
 	void Draw() override;
+	void Draw(int newCy) override;
 	void Update();
 	bool isPressed(DWORD Sender, WPARAM wParam) override;
 	void SetHeight(int cH) override;

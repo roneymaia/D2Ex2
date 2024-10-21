@@ -38,6 +38,15 @@ void ExBox::Draw()
 	}
 }
 
+void ExBox::Draw(int newCy)
+{
+	if (cState != INVISIBLE)
+	{
+		D2Funcs.D2GFX_DrawRectangle(cX, newCy, cX + cWidth, newCy + cHeight, aColor, aTransLvl);
+		D2ASMFuncs::D2CLIENT_DrawGZBox(cX, newCy, cX + cWidth, newCy + cHeight);
+	}
+}
+
 ExBox::~ExBox()
 {
 }

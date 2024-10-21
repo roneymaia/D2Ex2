@@ -111,6 +111,18 @@ void ExScrollBar::Draw()
 	Down->Draw();
 }
 
+void ExScrollBar::Draw(int newCy)
+{
+	if (cState == INVISIBLE) return;
+	for (int ty = newCy + 22; ty < newCy + cHeight; ty += 12)
+	{
+		D2Funcs.D2GFX_DrawCellContextEx(aCellFile->Get(), cX, ty, -1, DRAW_MODE_NORMAL, 0);
+	}
+	Slider->Draw();
+	Up->Draw();
+	Down->Draw();
+}
+
 void ExScrollBar::SetState(States aState)
 {
 	cState = aState;

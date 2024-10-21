@@ -28,6 +28,7 @@ class ExRectangle : public ExControl
 public:
 	ExRectangle(int X, int Y, int Width, int Height, int Color, int TransLvl);
 	void Draw();
+	void Draw(int newCy);
 	~ExRectangle();
 
 	void SetColor(unsigned int col) { aColor = col; }

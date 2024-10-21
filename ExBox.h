@@ -28,6 +28,7 @@ class ExBox : public ExControl
 public:
 	ExBox(int X, int Y, int Width, int Height, int Color, int TransLvl);
 	void Draw();
+	void Draw(int newCy);
 	~ExBox();
 	
 	void SetColor(unsigned int col) { aColor = col; }

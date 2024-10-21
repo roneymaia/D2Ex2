@@ -26,7 +26,6 @@
 #include "ExMPQ.h"
 #include "ExGDI.h"
 #ifdef D2EX_OPENGL
-#include "ExOpenGL.h"
 #endif
 #include <glide.h>
 

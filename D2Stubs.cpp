@@ -23,7 +23,7 @@
 #include "ExLoading.h"
 #include "ExOOG.h"
 #include "ExMultiRes.h"
-#include "ExAutomap.h"
+// #include "ExAutomap.h"
 #include "ExSpectator.h"
 
 
@@ -392,29 +392,29 @@ __declspec(naked) Room1* __fastcall D2Stubs::D2CLIENT_GetRoomByXY_STUB()
 	}
 }
 
-void __declspec(naked) __fastcall D2Stubs::D2CLIENT_BlobHook()
-{
-	__asm
-	{
-	push edx
-	mov edx,eax
-	push [esp+8]
-	call ExAutomap::DrawBlob
-	pop edx
-	ret 4
-	}
-}
+// void __declspec(naked) __fastcall D2Stubs::D2CLIENT_BlobHook()
+// {
+// 	__asm
+// 	{
+// 	push edx
+// 	mov edx,eax
+// 	push [esp+8]
+// 	call ExAutomap::DrawBlob
+// 	pop edx
+// 	ret 4
+// 	}
+// }
 
-void __declspec(naked) __fastcall D2Stubs::D2CLIENT_BlobHook2()
-{
-	__asm
-	{
-	push edx
-	mov edx,eax
-	call ExAutomap::DrawBlob
-	ret
-	}
-}
+// void __declspec(naked) __fastcall D2Stubs::D2CLIENT_BlobHook2()
+// {
+// 	__asm
+// 	{
+// 	push edx
+// 	mov edx,eax
+// 	call ExAutomap::DrawBlob
+// 	ret
+// 	}
+// }
 
 __declspec(naked) void* __stdcall D2ASMFuncs::D2WIN_LoadMpq(DWORD OrderFlag, const char* szDllFile, const char* szMpqFile, const char* szName, DWORD _1, BOOL(__stdcall *fnMPQMissing)())
 {
@@ -474,65 +474,65 @@ __declspec(naked) void D2Stubs::D2CLIENT_CharInfoTipHook()
 
 #ifdef D2EX_MULTIRES
 
-__declspec(naked) void D2Stubs::D2CLIENT_FixMercScreenDesc_STUB()
-{
-	__asm
-	{	
-		call ExMultiRes::D2CLIENT_FixMercScreenDesc
-		jmp D2Funcs.D2CLIENT_DrawMercName
-	}
-}
+// __declspec(naked) void D2Stubs::D2CLIENT_FixMercScreenDesc_STUB()
+// {
+// 	__asm
+// 	{	
+// 		call ExMultiRes::D2CLIENT_FixMercScreenDesc
+// 		jmp D2Funcs.D2CLIENT_DrawMercName
+// 	}
+// }
 
-__declspec(naked) void D2Stubs::D2CLIENT_FixMercScreenDesc2_STUB()
-{
-	__asm
-	{
-		call ExMultiRes::D2CLIENT_FixMercScreenDescRestore
-		pop ebx
-		add  esp, 48h
-		ret
-	}
-}
+// __declspec(naked) void D2Stubs::D2CLIENT_FixMercScreenDesc2_STUB()
+// {
+// 	__asm
+// 	{
+// 		call ExMultiRes::D2CLIENT_FixMercScreenDescRestore
+// 		pop ebx
+// 		add  esp, 48h
+// 		ret
+// 	}
+// }
 
 
-__declspec(naked) void D2Stubs::D2CLIENT_SetMousePos_STUB()
-{
-	__asm 
-	{
-		push edi // nY
-		push ebx // nX
+// __declspec(naked) void D2Stubs::D2CLIENT_SetMousePos_STUB()
+// {
+// 	__asm 
+// 	{
+// 		push edi // nY
+// 		push ebx // nX
 
-		call ExMultiRes::D2CLIENT_SetMousePos
+// 		call ExMultiRes::D2CLIENT_SetMousePos
 
-		ret
-	}
-}
+// 		ret
+// 	}
+// }
 
-__declspec(naked) void D2Stubs::D2CLIENT_SetResolution_STUB()
-{
-	__asm
-	{
-		mov ecx, esi
-		jmp ExMultiRes::D2CLIENT_SetResolution
-	}
-}
+// __declspec(naked) void D2Stubs::D2CLIENT_SetResolution_STUB()
+// {
+// 	__asm
+// 	{
+// 		mov ecx, esi
+// 		jmp ExMultiRes::D2CLIENT_SetResolution
+// 	}
+// }
 
-__declspec(naked) void D2Stubs::D2CLIENT_ResizeView_STUB()
-{
-	__asm
-	{
-		mov ecx, eax
-		jmp ExMultiRes::D2CLIENT_ResizeView;
-	}
-}
+// __declspec(naked) void D2Stubs::D2CLIENT_ResizeView_STUB()
+// {
+// 	__asm
+// 	{
+// 		mov ecx, eax
+// 		jmp ExMultiRes::D2CLIENT_ResizeView;
+// 	}
+// }
 
-__declspec(naked) BOOL D2Stubs::D2GFX_SetResolutionMode_STUB()
-{
-	__asm
-	{
-		jmp ExMultiRes::D2GFX_SetResolution
-	}
-}
+// __declspec(naked) BOOL D2Stubs::D2GFX_SetResolutionMode_STUB()
+// {
+// 	__asm
+// 	{
+// 		jmp ExMultiRes::D2GFX_SetResolution
+// 	}
+// }
 
 __declspec(naked) void D2Stubs::D2GFX_GetModeParams_STUB()
 {
@@ -618,56 +618,56 @@ __declspec(naked) void D2Stubs::D2GFX_LookUpFix_VI_STUB()
 #endif
 
 
-__declspec(naked) void D2Stubs::D2CLIENT_RosterRangeBlobDraw() // EBX = X, EDI = Y, ESP+0x10 = COL, ESI = pUnit -> (UnitAny* pUnit, int nX, int nY, int nColor)
-{
-	__asm
-	{
-		push [esp+0x10]
-		push ebx
-		push edi
-		push esi
+// __declspec(naked) void D2Stubs::D2CLIENT_RosterRangeBlobDraw() // EBX = X, EDI = Y, ESP+0x10 = COL, ESI = pUnit -> (UnitAny* pUnit, int nX, int nY, int nColor)
+// {
+// 	__asm
+// 	{
+// 		push [esp+0x10]
+// 		push ebx
+// 		push edi
+// 		push esi
 
-		call ExAutomap::DrawRangePlayerUnit
+// 		call ExAutomap::DrawRangePlayerUnit
 
-		//fallback
+// 		//fallback
 
-		pop edi
-		pop ebx
-		pop esi
-		pop ebp
+// 		pop edi
+// 		pop ebx
+// 		pop esi
+// 		pop ebp
 
-		add esp, 0x10
-		retn
-	}
-}
+// 		add esp, 0x10
+// 		retn
+// 	}
+// }
 
-__declspec(naked) void D2Stubs::D2CLIENT_RosterOutRangeBlobDraw() //AUTOMAP_DrawRosterUnit_6FB21670<eax>(RosterUnit *pRoster<edi>)
-{
-	__asm
-	{
-		push edi
+// __declspec(naked) void D2Stubs::D2CLIENT_RosterOutRangeBlobDraw() //AUTOMAP_DrawRosterUnit_6FB21670<eax>(RosterUnit *pRoster<edi>)
+// {
+// 	__asm
+// 	{
+// 		push edi
 		
-		call ExAutomap::DrawOutRangeRosterUnit
+// 		call ExAutomap::DrawOutRangeRosterUnit
 	
-		retn
-	}
-}
+// 		retn
+// 	}
+// }
 
 
 // -- Funcs
 
-#ifdef D2EX_MULTIRES
+// #ifdef D2EX_MULTIRES
 
-__declspec(naked) void __fastcall D2ASMFuncs::D2GFX_UpdateResizeVars(int nWidth, int nHeight)
-{
-	__asm
-	{
-		mov eax, ecx
-		jmp D2Ptrs.D2GFX_Resize
-	}
-}
+// __declspec(naked) void __fastcall D2ASMFuncs::D2GFX_UpdateResizeVars(int nWidth, int nHeight)
+// {
+// 	__asm
+// 	{
+// 		mov eax, ecx
+// 		jmp D2Ptrs.D2GFX_Resize
+// 	}
+// }
 
-#endif
+// #endif
 
 __declspec(naked) SkillDescTxt* __fastcall D2ASMFuncs::D2CLIENT_GetSkillDescTxt(int SkillId)
 {
@@ -789,14 +789,14 @@ __declspec(naked) int __fastcall D2ASMFuncs::D2CLIENT_GetSelectedMenu(int MouseY
 	}
 }
 
-__declspec(naked) AutoMapLayer* __fastcall D2ASMFuncs::D2CLIENT_InitAutomapLayer(DWORD dwLayer)
-{
-	__asm
-	{
-		mov eax, ecx;
-		call D2Ptrs.D2CLIENT_InitAutomapLayer_I;
-		ret;
-	}
-}
+//__declspec(naked) AutoMapLayer* __fastcall D2ASMFuncs::D2CLIENT_InitAutomapLayer(DWORD dwLayer)
+//{
+//	__asm
+//	{
+//		mov eax, ecx;
+//		call D2Ptrs.D2CLIENT_InitAutomapLayer_I;
+//		ret;
+//	}
+//}
 
 

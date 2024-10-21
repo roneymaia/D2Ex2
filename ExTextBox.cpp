@@ -179,6 +179,29 @@ void ExTextBox::Draw()
 	}
 }
 
+void ExTextBox::Draw(int newCy)
+{
+	if (cState == INVISIBLE) return;
+
+	if (cfLabel) SetText(cfLabel(id));
+	else if (cfsLabel) SetText(cfsLabel(id));
+	if (Label.empty()) return;
+
+	D2Funcs.D2WIN_SetTextSize(aFont);
+
+	if (cState == VISIBLE)
+	{
+		D2Funcs.D2WIN_DrawTextEx(Label.c_str(), cX, newCy, bBeingPressed ? bBeingSelected ? COL_RED : COL_WHITE : (TextColor - (bHoverable ? bBeingSelected ? COL_RED : COL_WHITE : COL_WHITE)), 0, TransLvl);
+		if (Hoover.empty()) return;
+		if (!bBeingSelected) return;
+		D2Funcs.D2WIN_DrawFramedText(Hoover.c_str(), cX, newCy - cHeight - 10, COL_WHITE, 0);
+	}
+	else if (cState == DISABLED)
+	{
+		D2Funcs.D2WIN_DrawTextEx(Label.c_str(), cX, newCy, COL_GREY, 0, TransLvl);
+	}
+}
+
 bool ExTextBox::isPressed(DWORD Sender, WPARAM wParam)
 {
 	if (cState == VISIBLE)

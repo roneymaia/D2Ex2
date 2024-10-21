@@ -148,9 +148,9 @@ _d2f D2Funcs = { 0 }; void SetupD2Funcs() {
 		EXFUNCPTR(D2GFX, DrawCellContext, void, __stdcall, (CellContext *context, int Xpos, int Ypos, int dwl, int nTransLvl, BYTE *Pal255), -10044)
 		EXFUNCPTR(D2GFX, DrawCellContextEx, void, __stdcall, (CellContext *context, int Xpos, int Ypos, int dwl, int nTransLvl, BYTE Color), -10068)
 
-		EXFUNCPTR(D2GFX, GetResolutionMode, int, __stdcall, (), -10063)
-		EXFUNCPTR(D2GFX, D2GFX_SetResolutionMode, BOOL, __stdcall, (int nMode, int bUpdate), -10029)
-		EXFUNCPTR(D2GFX, SetScreenShift, void, __fastcall, (int nShift), -10073)
+		// EXFUNCPTR(D2GFX, GetResolutionMode, int, __stdcall, (), -10063)
+		// EXFUNCPTR(D2GFX, D2GFX_SetResolutionMode, BOOL, __stdcall, (int nMode, int bUpdate), -10029)
+		// EXFUNCPTR(D2GFX, SetScreenShift, void, __fastcall, (int nShift), -10073)
 
 
 		EXFUNCPTR(D2GFX, 10015, int, __stdcall, (), -10015)

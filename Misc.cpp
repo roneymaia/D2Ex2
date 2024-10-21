@@ -396,6 +396,8 @@ void Misc::ShowMsgBox(char * Msg, ...)
 
 void Misc::Log(char* Msg...)
 {
+	return;
+
 	va_list arguments;
 	va_start(arguments, Msg);
 
@@ -407,7 +409,7 @@ void Misc::Log(char* Msg...)
 	char sTime[9];
 	_strtime_s(sTime, 9);
 	FILE* plik;
-	fopen_s(&plik, "D2Ex.log", "a");
+	fopen_s(&plik, "diablo2br.log", "a");
 	if (plik)
 	{
 		fprintf(plik, "[%s] %s\n", sTime, text);
@@ -422,6 +424,8 @@ void Misc::Log(char* Msg...)
 
 void Misc::Log(wchar_t* Msg, ...)
 {
+	return;
+
 	va_list arguments;
 	va_start(arguments, Msg);
 
@@ -433,7 +437,7 @@ void Misc::Log(wchar_t* Msg, ...)
 	wchar_t sTime[9];
 	_wstrtime_s(sTime, 9);
 	FILE* plik;
-	fopen_s(&plik, "D2Ex.log", "a");
+	fopen_s(&plik, "diablo2br.log", "a");
 	if (plik)
 	{
 		fwprintf(plik, L"[%s] %s\n", sTime, text);

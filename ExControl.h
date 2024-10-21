@@ -39,6 +39,7 @@ public:
 	ExControl(int X, int Y, int X2, int Y2, void(*fevent_onClick)(exId));
 	virtual ~ExControl(void);
 	virtual void Draw() = 0;
+	virtual void Draw(int newCy) = 0;
 	virtual bool isPressed(DWORD Sender, WPARAM wParam);
 	virtual void SetAlign(Align xAlign, Align yAlign);
 	virtual void Relocate();

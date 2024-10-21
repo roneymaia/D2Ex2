@@ -554,9 +554,9 @@ LONG WINAPI ExInput::GameWindowEvent(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM
 				}
 			}
 		}
-		if (wParam == VK_CONTROL) {
-			gControl = true;
-		}
+		// if (wParam == VK_CONTROL) {
+		// 	gControl = true;
+		// }
 
 #ifdef D2EX_EXAIM_ENABLED
 		if(wParam == VK_INSERT && D2Vars.D2CLIENT_UIModes[UI_CHAT] ==0 ) {ExAim::DoAttack(); return 0; }
@@ -574,9 +574,9 @@ LONG WINAPI ExInput::GameWindowEvent(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM
 #endif
 	}
 	if (uMsg == WM_KEYUP) {
-		if (wParam == VK_CONTROL) {
-			gControl = false;
-		}
+		// if (wParam == VK_CONTROL) {
+		// 	gControl = false;
+		// }
 	}
 
 	return (LONG)CallWindowProcA(OldWNDPROC, hWnd, uMsg, wParam, lParam);

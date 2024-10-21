@@ -29,6 +29,7 @@ public:
 	ExImage(int X, int Y, int Transp, unsigned int Frame, CellFile* CellFile);
 	ExImage(int X, int Y, int Transp, unsigned int Frame, string szFile);
 	void Draw(void);
+	void Draw(int newCy);
 	bool isPressed(DWORD Sender, WPARAM wParam) override;
 	~ExImage(void);
 	void Relocate();

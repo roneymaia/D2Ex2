@@ -80,6 +80,7 @@ void ExImage::Relocate() //- Set control align
 		int parentW = pParent->GetWidth();
 		int parentH = pParent->GetHeight();
 
+
 		if (wAlign == CENTER) cX = ((parentX + parentW + parentX) - cWidth) / 2;
 		else if (wAlign == RIGHT) cX = parentX + parentW - cWidth;
 		if (hAlign == CENTER) cY = ((parentY + parentH + parentY) + cHeight) / 2;
@@ -95,7 +96,9 @@ void ExImage::Relocate() //- Set control align
 
 void ExImage::Draw()
 {
+
 	if (cState == INVISIBLE) return;
+
 	if (MultiFrame)
 	{
 		//TODO: IMPROVE IT, ITS UNSTABLE ATM
@@ -108,6 +111,25 @@ void ExImage::Draw()
 
 	if (Hoover.empty() || !bBeingSelected) return;
 	D2Funcs.D2WIN_DrawFramedText(Hoover.c_str(), cX, cY - cHeight - 10, 0, 0);
+}
+
+void ExImage::Draw(int newCy)
+{
+
+	if (cState == INVISIBLE) return;
+
+	if (MultiFrame)
+	{
+		//TODO: IMPROVE IT, ITS UNSTABLE ATM
+		//D2Funcs.D2WIN_DrawCellFile(aCellFile->GetCF(),cX,cY,0,TransLvl,ColorShift);
+		//D2Funcs.D2WIN_DrawCellFile(aCellFile->GetCF(),cX+177,cY+256,1,TransLvl,ColorShift);
+		//D2Funcs.D2WIN_DrawCellFile(aCellFile->GetCF(),cX,cY+(256*2),8,TransLvl,ColorShift);
+	}
+	else
+		D2Funcs.D2GFX_DrawCellContextEx(aCellFile->Get(), cX, newCy, -1, TransLvl, ColorShift);
+
+	if (Hoover.empty() || !bBeingSelected) return;
+	D2Funcs.D2WIN_DrawFramedText(Hoover.c_str(), cX, newCy - cHeight - 10, 0, 0);
 }
 
 ExImage::~ExImage(void)

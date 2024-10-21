@@ -35,6 +35,12 @@ void ExRectangle::Draw()
 		D2Funcs.D2GFX_DrawRectangle(cX, cY, cX + cWidth, cY + cHeight, aColor, aTransLvl);
 }
 
+void ExRectangle::Draw(int newCy)
+{
+	if (cState != INVISIBLE)
+		D2Funcs.D2GFX_DrawRectangle(cX, newCy, cX + cWidth, newCy + cHeight, aColor, aTransLvl);
+}
+
 ExRectangle::~ExRectangle()
 {
 }

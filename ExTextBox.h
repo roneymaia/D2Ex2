@@ -35,6 +35,7 @@ public:
 	ExTextBox(int tX, int tY, int tTextColor, int tTextFont, string sLabel, void(*tevent_onClick)(exId));
 	ExTextBox(int tX, int tY, int tTextColor, int tTextFont, string(*fLabel)(exId), void(*tevent_onClick)(exId));
 	void Draw() override;
+	void Draw(int newCy) override;
 	bool isPressed(DWORD Sender, WPARAM wParam) override;
 	~ExTextBox(void);
 
