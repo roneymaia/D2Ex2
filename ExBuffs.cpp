@@ -110,6 +110,8 @@ ExBuff::ExBuff(unsigned int pos, ExBuffsImgs ImageId, BuffType aType) : ExContro
 	this->pos = pos;
 	ExControl::SetX((24 * pos) + (*D2Vars.D2GFX_GfxMode > 2 ? 170 : 115));
 
+	initialNewY = GetY();
+
 	Buff = new ExImage(GetX(), GetY(), 2, ImageId, cfBuffs->GetCF());
 	BuffTime = new ExRectangle(GetX(), GetY() - GetHeight(), GetWidth(), GetHeight(), aType, 0);
 	BuffInfo = new ExTextBox(GetX() + 5, GetY(), 0, 0, L"", 0);
@@ -173,14 +175,58 @@ void ExBuff::Draw()
 	int newBiCy = BuffInfo->GetY();
 
 	if (*D2Vars.D2CLIENT_ScreenWidth == 1068 && *D2Vars.D2CLIENT_ScreenHeight == 600) {
-		newCy -= 35;
-		newBtCy -= 35;
-		newBiCy -= 35;
+		if (newCyDrawXRes != 1068) {
+			newCy = *D2Vars.D2CLIENT_ScreenHeight - 50;
+			newBtCy = *D2Vars.D2CLIENT_ScreenHeight - 50 - GetHeight();
+			newBiCy = *D2Vars.D2CLIENT_ScreenHeight - 50;
+			newCyDrawXRes = 1068;
+
+			Buff->SetY(newCy);
+			BuffTime->SetY(newBtCy);
+			BuffInfo->SetY(newBiCy);
+		}
+	} else if (*D2Vars.D2CLIENT_ScreenWidth == 856 && *D2Vars.D2CLIENT_ScreenHeight == 480) {
+		if (newCyDrawXRes != 856) {
+			newCy = *D2Vars.D2CLIENT_ScreenHeight - 50;
+			newBtCy = *D2Vars.D2CLIENT_ScreenHeight - 50 - GetHeight();
+			newBiCy = *D2Vars.D2CLIENT_ScreenHeight - 50;
+			newCyDrawXRes = 856;
+
+			Buff->SetY(newCy);
+			BuffTime->SetY(newBtCy);
+			BuffInfo->SetY(newBiCy);
+		}
+	} else if (*D2Vars.D2CLIENT_ScreenWidth == 800 && *D2Vars.D2CLIENT_ScreenHeight == 600) {
+		if (newCyDrawXRes != 800) {
+			newCy = *D2Vars.D2CLIENT_ScreenHeight - 50;
+			newBtCy = *D2Vars.D2CLIENT_ScreenHeight - 50 - GetHeight();
+			newBiCy = *D2Vars.D2CLIENT_ScreenHeight - 50;
+			newCyDrawXRes = 800;
+
+			Buff->SetY(newCy);
+			BuffTime->SetY(newBtCy);
+			BuffInfo->SetY(newBiCy);
+		}
+	} else if (*D2Vars.D2CLIENT_ScreenWidth == 640 && *D2Vars.D2CLIENT_ScreenHeight == 480) {
+		if (newCyDrawXRes != 640) {
+			newCy = *D2Vars.D2CLIENT_ScreenHeight - 50;
+			newBtCy = *D2Vars.D2CLIENT_ScreenHeight - 50 - GetHeight();
+			newBiCy = *D2Vars.D2CLIENT_ScreenHeight - 50;
+			newCyDrawXRes = 640;
+
+			Buff->SetY(newCy);
+			BuffTime->SetY(newBtCy);
+			BuffInfo->SetY(newBiCy);
+		}
 	}
 
-	Buff->Draw(newCy);
-	BuffTime->Draw(newBtCy);
-	BuffInfo->Draw(newBiCy);
+	Buff->Draw();
+	BuffTime->Draw();
+	BuffInfo->Draw();
+
+	// Buff->Draw(newCy);
+	// BuffTime->Draw(newBtCy);
+	// BuffInfo->Draw(newBiCy);
 }
 
 void ExBuff::Draw(int newCy)

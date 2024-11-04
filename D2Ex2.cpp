@@ -371,7 +371,7 @@ Misc::Patch(JUMP, GetDllOffset("D2Common.dll", -10864), (DWORD)ExExtendedLevels:
 	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0xB293D), (DWORD)ExInput::GameInput_STUB, 5, "Chat Input Wrapper"); // k
 	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0xB1283), (DWORD)ExInput::RealmInput, 5, "Realm Input Wrapper"); // k
 
-	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x96736), (DWORD)D2Stubs::D2CLIENT_OnGetItemName, 9, "Item Name Wrapper"); //k
+	// Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x96736), (DWORD)D2Stubs::D2CLIENT_OnGetItemName, 9, "Item Name Wrapper"); //k
 	// <- Removed Life/Mana patch cause 1.13d supports it natively
 	Misc::Patch(JUMP, GetDllOffset("D2Client.dll", 0x2E3FC), (DWORD)D2Stubs::D2CLIENT_Properties, 6, "New Properties");  //k
 	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x2E04B), (DWORD)D2Stubs::D2CLIENT_GetPropertyStringDamage_STUB, 5, "On each damage related property");

@@ -99,6 +99,8 @@ private:
 	ExImage * Buff;
 	ExRectangle * BuffTime;
 	ExTextBox * BuffInfo;
+	int initialNewY = 0;
+	int newCyDrawXRes = 0;
 };
 
 typedef vector<ExBuffData>::iterator buff_it;

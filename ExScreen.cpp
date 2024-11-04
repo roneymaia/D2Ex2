@@ -1093,13 +1093,13 @@ void ExScreen::DrawResInfo()
 	}
 
 	signed int h = (signed int)*D2Vars.D2CLIENT_ScreenHeight;
-	if (mX>175 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mX< 316 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mY>h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 147 && mY< h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 122)  //Fire Res
+	if (mX>175 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mX< 316 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mY>h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 157 && mY< h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 122)  //Fire Res
 	{ 
 		nRes+= D2Funcs.D2COMMON_GetStatSigned(ptUnit,STAT_FIRERESIST,0);
 		wostringstream wInfo;
 		wInfo << (gLocaleId == LOCALE_POL? L"Ca�kowita odporno��: " : L"Stacked resistance: ") << GetColorCode(COL_RED) << nRes ; 
 		D2Funcs.D2WIN_SetTextSize(0);
-		D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 160 + *D2Vars.D2CLIENT_UIPanelDrawXOffset, h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 150, 0, 2, COL_WHITE);
+		D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 160 + *D2Vars.D2CLIENT_UIPanelDrawXOffset, h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 160, 0, 2, COL_WHITE);
 	}
 	else
 		if (mX>175 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mX< 316 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mY>h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 123 && mY< h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 98)  //Cold Res
@@ -1108,7 +1108,7 @@ void ExScreen::DrawResInfo()
 		wostringstream wInfo;
 		wInfo << (gLocaleId == LOCALE_POL? L"Ca�kowita odporno��: " : L"Stacked resistance: ") << GetColorCode(COL_BLUE) << nRes ; 
 		D2Funcs.D2WIN_SetTextSize(0);
-		D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 160 + *D2Vars.D2CLIENT_UIPanelDrawXOffset, h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 150, 0, 2, COL_WHITE);
+		D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 160 + *D2Vars.D2CLIENT_UIPanelDrawXOffset, h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 160, 0, 2, COL_WHITE);
 	}
 	else
 		if (mX>175 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mX< 316 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mY>h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 99 && mY< h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 74)  //Light Res
@@ -1117,7 +1117,7 @@ void ExScreen::DrawResInfo()
 		wostringstream wInfo;
 		wInfo << (gLocaleId == LOCALE_POL? L"Ca�kowita odporno��: " : L"Stacked resistance: ") << GetColorCode(COL_YELLOW) << nRes ; 
 		D2Funcs.D2WIN_SetTextSize(0);
-		D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 160 + *D2Vars.D2CLIENT_UIPanelDrawXOffset, h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 150, 0, 2, COL_WHITE);
+		D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 160 + *D2Vars.D2CLIENT_UIPanelDrawXOffset, h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 160, 0, 2, COL_WHITE);
 	}
 	else
 		if (mX>175 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mX< 316 + *D2Vars.D2CLIENT_UIPanelDrawXOffset && mY>h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 75 && mY< h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 50)  //Poison Res
@@ -1126,7 +1126,7 @@ void ExScreen::DrawResInfo()
 		wostringstream wInfo;
 		wInfo << (gLocaleId == LOCALE_POL? L"Ca�kowita odporno��: " : L"Stacked resistance: ") << GetColorCode(COL_LIGHTGREEN) << nRes ; 
 		D2Funcs.D2WIN_SetTextSize(0);
-		D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 160 + *D2Vars.D2CLIENT_UIPanelDrawXOffset, h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 150, 0, 2, COL_WHITE);
+		D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 160 + *D2Vars.D2CLIENT_UIPanelDrawXOffset, h + *D2Vars.D2CLIENT_UIPanelDrawYOffset - 160, 0, 2, COL_WHITE);
 	}
 ExScreen::DrawDmg();
 }
@@ -1181,8 +1181,24 @@ void ExScreen::DrawDmg()
 	unsigned int mX = *D2Vars.D2CLIENT_MouseX;
 	unsigned int mY = *D2Vars.D2CLIENT_MouseY;
 	UnitAny * ptUnit = D2Funcs.D2CLIENT_GetPlayer();
+
+	int avCx = 242;
+	int avCy = *D2Vars.D2CLIENT_ScreenHeight;
+
+	if (*D2Vars.D2CLIENT_ScreenWidth == 1068) {
+		avCx = 375;
+	} else if (*D2Vars.D2CLIENT_ScreenWidth == 856) {
+		avCx = 270;
+		avCy += 60;
+	} else if (*D2Vars.D2CLIENT_ScreenWidth == 800) {
+		avCx = 240;
+	} else if (*D2Vars.D2CLIENT_ScreenWidth == 640) {
+		avCx = 165;
+		avCy += 60;
+	}
+
 	ASSERT(ptUnit)
-	if (mX > 240 && mX < 394 && mY > (*D2Vars.D2CLIENT_ScreenHeight - 455) && mY < (*D2Vars.D2CLIENT_ScreenHeight - 435))
+	if (mX > avCx && mX < (avCx + 154) && mY > (avCy - 455) && mY < (avCy - 435))
 	{
 
 		Skill * ptSkill = D2Funcs.D2COMMON_GetLeftSkill(ptUnit);
@@ -1221,13 +1237,15 @@ void ExScreen::DrawDmg()
 
 		if (AvgDmg)
 		{
+			
+
 			wostringstream wInfo;
 			wInfo << (gLocaleId == LOCALE_POL ? L"�rednie Obra�enia: " : L"Average Damage: ") << GetColorCode(COL_YELLOW) << AvgDmg;
 			D2Funcs.D2WIN_SetTextSize(0);
-			D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 242, *D2Vars.D2CLIENT_ScreenHeight - 458, 0, 2, COL_WHITE);
+			D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), avCx, avCy - 468, 0, 2, COL_WHITE);
 		}
 	}
-	else if (mX > 240 && mX<394 && mY>(*D2Vars.D2CLIENT_ScreenHeight - 430) && mY < (*D2Vars.D2CLIENT_ScreenHeight - 410))
+	else if (mX > avCx && mX < (avCx + 154) && mY>(avCy - 430) && mY < (avCy - 410))
 	{
 		Skill * ptSkill = D2Funcs.D2COMMON_GetRightSkill(ptUnit);
 		ASSERT(ptSkill)
@@ -1268,7 +1286,7 @@ void ExScreen::DrawDmg()
 			wostringstream wInfo;
 			wInfo << (gLocaleId == LOCALE_POL ? L"�rednie Obra�enia: " : L"Average Damage: ") << GetColorCode(COL_YELLOW) << AvgDmg;
 			D2Funcs.D2WIN_SetTextSize(0);
-			D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), 242, *D2Vars.D2CLIENT_ScreenHeight - 437, 0, 2, COL_WHITE);
+			D2Funcs.D2WIN_DrawRectangledText(wInfo.str().c_str(), avCx, avCy - 447, 0, 2, COL_WHITE);
 		}
 	}
 }

@@ -28,7 +28,7 @@
 //#define D2EX_EXAIM_ENABLED "ExAim|"			// Experimental -- never finished | may not work --
 //#define D2EX_PVM_BUILD "PvM|"					// Enables Maphack with monsters on the map, autotele, etc.
 #define D2EX_MAX_SND_TXT_ROWS 4954				// Maximum rows in Sound.txt
-// #define	D2EX_I_NEED_CUBE					// Define if you need transmute button
+#define	D2EX_I_NEED_CUBE					// Define if you need transmute button
 // #define D2EX_ENABLE_PACKET_COMMANDS				// Enables packet sender (#send, #recv, #block)
 // #define D2EX_DEBUG_INFO							// Display Selected unit info (id, x, y)
 #define D2EX_PRINT_ITEMLEVEL					// Add item level property to an item
