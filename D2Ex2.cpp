@@ -572,6 +572,7 @@ Misc::Patch(JUMP, GetDllOffset("D2Common.dll", -10864), (DWORD)ExExtendedLevels:
 #ifndef D2EX_PVPGN_EXT
 	Misc::WriteDword((DWORD*)&D2Vars.D2CLIENT_PacketHandler[0x7F].CallBack, (DWORD)&ExParty::OnLocationUpdate);
 #endif
+	Misc::WriteDword((DWORD*)&D2Vars.D2CLIENT_PacketHandler[0x7F].CallBack, (DWORD)&ExParty::OnLocationUpdate);
 
 #ifdef D2EX_ARGOLD
 	Misc::WriteDword((DWORD*)&D2Vars.D2CLIENT_PacketHandler[0x77].CallBack, (DWORD)&ExScreen::OnTradeButton);

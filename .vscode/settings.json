@@ -5,6 +5,7 @@
         "atomic": "cpp",
         "iosfwd": "cpp",
         "vector": "cpp",
-        "xlocinfo": "cpp"
+        "xlocinfo": "cpp",
+        "list": "cpp"
     }
 }
