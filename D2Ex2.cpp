@@ -241,7 +241,7 @@ DWORD WINAPI D2Ex::Init(LPVOID lpReserved)
 	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x76B66), (DWORD)D2Stubs::D2CLIENT_OnGetItemName, 9, "Item Name Wrapper");
 	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x66C11), (DWORD)ExScreen::DrawLifeManaTxt, 5, "Life Mana Txt");
 	Misc::Patch(JUMP, GetDllOffset("D2Client.dll", 0x2280C), (DWORD)D2Stubs::D2CLIENT_Properties, 6, "New Properties");
-	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x35ED7), (DWORD)D2Stubs::D2CLIENT_Lighting_STUB, 6, "Lighting Patch");
+	// Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x35ED7), (DWORD)D2Stubs::D2CLIENT_Lighting_STUB, 6, "Lighting Patch");
 	//!!!!!!!!!!!!!!!!!! CODE UNSAFE FOR WARDEN !!!!!!!!!!!!!!!!!!!!!!
 	//Misc::Patch(CALL,GetDllOffset("D2Client.dll",0xBDFB1),(DWORD)ExInput::PacketInput_STUB,5,"Realm Input Wrapper");
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -376,7 +376,7 @@ Misc::Patch(JUMP, GetDllOffset("D2Common.dll", -10864), (DWORD)ExExtendedLevels:
 	Misc::Patch(JUMP, GetDllOffset("D2Client.dll", 0x2E3FC), (DWORD)D2Stubs::D2CLIENT_Properties, 6, "New Properties");  //k
 	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x2E04B), (DWORD)D2Stubs::D2CLIENT_GetPropertyStringDamage_STUB, 5, "On each damage related property");
 	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x2E06D), (DWORD)D2Stubs::D2CLIENT_GetPropertyString_STUB, 5, "On each property");
-	Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x233A7), (DWORD)D2Stubs::D2CLIENT_Lighting_STUB, 6, "Lighting Patch"); //k
+	// Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x233A7), (DWORD)D2Stubs::D2CLIENT_Lighting_STUB, 6, "Lighting Patch"); //k
 	//!!!!!!!!!!!!!!!!!! CODE UNSAFE FOR WARDEN !!!!!!!!!!!!!!!!!!!!!!
 	//Misc::Patch(CALL, GetDllOffset("D2Client.dll", 0x83301), (DWORD)ExInput::PacketInput_STUB, 5, "Realm Input Wrapper");
 	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
