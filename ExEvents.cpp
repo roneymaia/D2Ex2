@@ -235,7 +235,7 @@ void ExEvents::EventsLoop()
 		case EXEVENT_TEXTMSG:
 		{
 			if (e->timer == 0) { // Start the event
-				D2ASMFuncs::D2CLIENT_PlaySound((WORD)e->arg);
+				// D2ASMFuncs::D2CLIENT_PlaySound((WORD)e->arg);
 				gExGUI->setState(e->controlId, ExControl::VISIBLE);
 				e->timer = tick;
 				break;

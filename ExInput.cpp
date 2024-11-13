@@ -231,8 +231,8 @@ DWORD __fastcall ExInput::GameInput(wchar_t* wMsg)
 	}
 	if (strcmp(In, "#t3") == 0)
 	{ 
-		auto test = blizz_unique_ptr<char>((char*)D2ASMFuncs::D2WIN_ReadFileFromMPQ("DATA\\LOCAL\\FONT\\LATIN\\README.TXT", NULL, NULL));
-		DEBUGMSG("Read text with data: %s", test)
+		/*auto test = blizz_unique_ptr<char>((char*)D2ASMFuncs::D2WIN_ReadFileFromMPQ("DATA\\LOCAL\\FONT\\LATIN\\README.TXT", NULL, NULL));
+		DEBUGMSG("Read text with data: %s", test)*/
 	}
 	if (strcmp(In, "#dlstresstest") == 0)
 	{
