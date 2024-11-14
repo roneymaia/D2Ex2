@@ -33,6 +33,7 @@
 #include "ExMultiRes.h"
 #include "ExFontManager.h"
 #include "ExBuffs.h"
+#include <cstring>
 
 
 #undef min
@@ -811,6 +812,37 @@ bool containsStatsValue(WORD i, WORD* array, std::size_t arraySize) {
 	return false;
 }
 
+int getRunewordPropertyByName(int typeProperty, char szName[64]) {
+	// Pillar of Faith
+	if (_stricmp(szName, "runeword105") == 0) {
+		// red-dmg% % damage reduction
+		if (typeProperty == 4) {
+			return 8;
+		}
+	}
+
+	return 0;
+}
+
+int getRuneValueProperty(int typeProperty, DWORD arrayRunes[], int size, char szName[64]) {
+	int valueProp = getRunewordPropertyByName(typeProperty, szName);
+
+	if (valueProp > 0) return valueProp;
+
+    for (int i = 0; i < size; i++) {
+		// red-dmg% % damage reduction
+		if (typeProperty == 4) {
+			// 639 - Ber Rune
+			if (arrayRunes[i] == 639) {
+				// Ber Rune - 8% red-dmg
+				valueProp = valueProp + 8;
+			}
+		}
+    }
+
+    return valueProp;
+}
+
 // UniqueItems->UniqueItemsTxtStat->PropertiesTxt-> Final stat!
 void __stdcall ExScreen::OnPropertyBuild(wchar_t* wOut, int nStat, UnitAny* pItem, int nStatParam)
 {
@@ -863,12 +895,15 @@ void __stdcall ExScreen::OnPropertyBuild(wchar_t* wOut, int nStat, UnitAny* pIte
 		{
 			if (pItem->pItemData->ItemFlags & ITEMFLAG_RUNEWORD) {
 				RunesTxt* pTxt = GetRunewordTxtById(pItem->pItemData->MagicPrefix[0]);
+
 				if (!pTxt)
 					break;
 				stat = GetItemsTxtStatByMod(pTxt->hStats, 7, nStat, nStatParam);
 				if (stat) {
-					int statMin = stat->dwMin;
-					int statMax = stat->dwMax;
+					int sumValue = getRuneValueProperty(stat->dwProp, pTxt->dwRune, std::size(pTxt->dwRune), pTxt->szName);
+
+					int statMin = stat->dwMin + sumValue;
+					int statMax = stat->dwMax + sumValue;
 
 					all_stat = GetAllStatModifier(pTxt->hStats, 7, nStat, stat);
 
