@@ -802,6 +802,15 @@ BOOL __stdcall ExScreen::OnDamagePropertyBuild(UnitAny* pItem, DamageStats* pDmg
 	return TRUE;
 }
 
+bool containsStatsValue(WORD i, WORD* array, std::size_t arraySize) {
+	for (std::size_t j = 0; j < arraySize; ++j) {
+		if (array[j] == i) {
+			return true;
+		}
+	}
+	return false;
+}
+
 // UniqueItems->UniqueItemsTxtStat->PropertiesTxt-> Final stat!
 void __stdcall ExScreen::OnPropertyBuild(wchar_t* wOut, int nStat, UnitAny* pItem, int nStatParam)
 {
@@ -890,6 +899,13 @@ void __stdcall ExScreen::OnPropertyBuild(wchar_t* wOut, int nStat, UnitAny* pIte
 				for (int i = 1;; ++i) {
 					if (!pItem->pItemData->AutoPrefix && i > nAffixes) // Don't include Automagic.txt affixes if item doesn't use them
 						break;
+
+					bool foundInPrefix = containsStatsValue(i, pItem->pItemData->MagicPrefix, std::size(pItem->pItemData->MagicPrefix));
+					bool foundInSutfix = containsStatsValue(i, pItem->pItemData->MagicSutfix, std::size(pItem->pItemData->MagicSutfix));
+					
+					// Skip if stat not found on Prefix or Suffix
+					if (!(foundInPrefix || foundInSutfix)) continue;
+
 					AutoMagicTxt* pTxt = D2Funcs.D2COMMON_GetAffixTxt(i);
 					if (!pTxt)
 						break;
