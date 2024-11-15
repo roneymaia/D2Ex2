@@ -863,8 +863,13 @@ void __stdcall ExScreen::OnPropertyBuild(wchar_t* wOut, int nStat, UnitAny* pIte
 		{
 			if (pItem->pItemData->QualityNo == ITEM_UNIQUE) {
 				UniqueItemsTxt * pTxt = &(*D2Vars.D2COMMON_sgptDataTables)->pUniqueItemsTxt[pItem->pItemData->FileIndex];
+
 				if (!pTxt)
 					break;
+
+				// Hellfire Torch 3 all skills class ignore
+				if (pItem->pItemData->FileIndex == 400 && nStat == 83) break;
+
 				stat = GetItemsTxtStatByMod(pTxt->hStats, 12, nStat, nStatParam);
 				if (stat)
 					all_stat = GetAllStatModifier(pTxt->hStats, 12, nStat, stat);
