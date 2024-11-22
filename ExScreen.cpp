@@ -585,10 +585,11 @@ static ItemsTxtStat* GetItemsTxtStatByMod(ItemsTxtStat* pStats, int nStats, int 
 {
 	if (nStat == STAT_ITEM_SKILLONKILL || nStat == STAT_ITEM_SKILLONHIT || nStat == STAT_ITEM_SKILLONATTACK || nStat == STAT_ITEM_SKILLONDEATH ||
 		nStat == STAT_ITEM_SKILLONLEVELUP || nStat == STAT_ITEM_SKILLONGETHIT || nStat == STAT_ITEM_CHARGED_SKILL ||
-		nStat == STAT_COLDMINDAM  || nStat == STAT_LIGHTMINDAM || nStat == STAT_FIREMINDAM || nStat == STAT_POISONMINDAM || nStat == STAT_MAGICMINDAM) // Skip skills without ranges
+		nStat == STAT_COLDMINDAM  || nStat == STAT_LIGHTMINDAM || nStat == STAT_FIREMINDAM || nStat == STAT_POISONMINDAM || nStat == STAT_MAGICMINDAM ||
+		nStat == STAT_SECONDARY_MINDAMAGE || nStat == STAT_SECONDARY_MAXDAMAGE || nStat == STAT_ITEM_REQ_PERCENT) // Skip skills without ranges
 		return 0;
 	for (int i = 0; i<nStats; ++i) {
-		if (pStats[i].dwProp == 0xffffffff)
+		if (pStats[i].dwProp == 0xffffffff || pStats[i].dwProp == 140) // 140 - add x-x damage
 			break;
 		PropertiesTxt * pProp = &(*D2Vars.D2COMMON_sgptDataTables)->pPropertiesTxt[pStats[i].dwProp];
 		if (!pProp)
@@ -931,7 +932,7 @@ void __stdcall ExScreen::OnPropertyBuild(wchar_t* wOut, int nStat, UnitAny* pIte
 					}
 				} 
 			}
-			else if (pItem->pItemData->QualityNo == ITEM_MAGIC || pItem->pItemData->QualityNo == ITEM_RARE || pItem->pItemData->QualityNo == ITEM_CRAFTED)
+			else if (pItem->pItemData->QualityNo == ITEM_MAGIC || pItem->pItemData->QualityNo == ITEM_RARE /* || pItem->pItemData->QualityNo == ITEM_CRAFTED*/)
 			{
 				int nAffixes = *D2Vars.D2COMMON_AutoMagicTxt - D2Funcs.D2COMMON_GetAffixTxt(1); // Number of affixes without Automagic
 				int min = 0, max = 0;
