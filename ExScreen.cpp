@@ -820,6 +820,13 @@ int getRunewordPropertyByName(int typeProperty, char szName[64]) {
 		if (typeProperty == 4) {
 			return 8;
 		}
+	} 
+	// Call To Arms
+	if (_stricmp(szName, "runeword13") == 0) {
+		// Enhanced % damage
+		if (typeProperty == 29) {
+			return 50;
+		}
 	}
 
 	return 0;
@@ -837,6 +844,14 @@ int getRuneValueProperty(int typeProperty, DWORD arrayRunes[], int size, char sz
 			if (arrayRunes[i] == 639) {
 				// Ber Rune - 8% red-dmg
 				valueProp = valueProp + 8;
+			}
+		}
+		// Enhanced % Damage
+		if (typeProperty == 29) {
+			// 620 - Ohm Rune
+			if (arrayRunes[i] == 636) {
+				// Ohm Rune - 50% Damage
+				valueProp = valueProp + 50;
 			}
 		}
     }
