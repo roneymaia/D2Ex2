@@ -966,7 +966,7 @@ void __stdcall ExScreen::OnPropertyBuild(wchar_t* wOut, int nStat, UnitAny* pIte
 					if (!pTxt)
 						break;
 					//Skip if stat level is > 99 or affix is prelod
-					if (pTxt->dwLevel > 99 || !pTxt->wVersion)
+					if (pTxt->dwLevel > 99 || (pItem->pItemData->QualityNo != ITEM_RARE && !pTxt->wVersion))
 						continue;
 					//Skip if stat is not spawnable
 					if (pItem->pItemData->QualityNo < ITEM_CRAFTED && !pTxt->wSpawnable)
