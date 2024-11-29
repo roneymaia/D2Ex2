@@ -828,6 +828,13 @@ int getRunewordPropertyByName(int typeProperty, char szName[64]) {
 			return 50;
 		}
 	}
+	// Cure D2R
+	if (_stricmp(szName, "runeword171") == 0) {
+		// Tal rune poison resistence
+		if (typeProperty == 39) {
+			return 35;
+		}
+	}
 
 	return 0;
 }
@@ -848,10 +855,18 @@ int getRuneValueProperty(int typeProperty, DWORD arrayRunes[], int size, char sz
 		}
 		// Enhanced % Damage
 		if (typeProperty == 29) {
-			// 620 - Ohm Rune
+			// 636 - Ohm Rune
 			if (arrayRunes[i] == 636) {
 				// Ohm Rune - 50% Damage
 				valueProp = valueProp + 50;
+			}
+		}
+		// Poison resistence
+		if (typeProperty == 39) {
+			// 622 - Tal Rune
+			if (arrayRunes[i] == 622) {
+				// Tal Rune - 35% poison resistence
+				valueProp = valueProp + 35;
 			}
 		}
     }
