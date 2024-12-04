@@ -975,7 +975,7 @@ void __stdcall ExScreen::OnPropertyBuild(wchar_t* wOut, int nStat, UnitAny* pIte
 					bool foundInSutfix = containsStatsValue(i, pItem->pItemData->MagicSutfix, std::size(pItem->pItemData->MagicSutfix));
 					
 					// Skip if stat not found on Prefix or Suffix
-					if (!(foundInPrefix || foundInSutfix)) continue;
+					if (pItem->pItemData->QualityNo == ITEM_MAGIC && !(foundInPrefix || foundInSutfix)) continue;
 
 					AutoMagicTxt* pTxt = D2Funcs.D2COMMON_GetAffixTxt(i);
 					if (!pTxt)
